@@ -8,7 +8,7 @@ src/groups
 src/homePageComponents
 src/homePageLayouts
 src/labels
-src/objects
+#src/objects
 src/permissionsets
 src/profiles
 src/quickActions

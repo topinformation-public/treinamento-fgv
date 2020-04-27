@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>OAuth Authentication and Token Settings</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>clientKey__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Key</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>clientSecret__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Secret</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>enabled__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>This Configuration is enabled</description>
+        <externalId>false</externalId>
+        <label>enabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>eventName__c</fullName>
+        <description>Informe o nome do evento que será publicado para a obtenção do token</description>
+        <externalId>false</externalId>
+        <label>eventName</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>grantType__c</fullName>
+        <externalId>false</externalId>
+        <label>Grant Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>password__c</fullName>
+        <externalId>false</externalId>
+        <label>Password</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>scope__c</fullName>
+        <externalId>false</externalId>
+        <label>Scope</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>token__c</fullName>
+        <externalId>false</externalId>
+        <label>Token</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>username__c</fullName>
+        <externalId>false</externalId>
+        <label>Username</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>OAuth Configuration</label>
+    <visibility>Public</visibility>
+</CustomObject>

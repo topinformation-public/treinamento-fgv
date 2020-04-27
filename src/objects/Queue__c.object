@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Responsavel por prover garantia de entrega para camada de integração</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>EventName__c</fullName>
+        <description>Event Name or Transaction Name</description>
+        <externalId>false</externalId>
+        <label>Event Name</label>
+        <length>100</length>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ExceptionStackTrace__c</fullName>
+        <description>Used only for error messages, fill this field using getStackTraceString() method</description>
+        <externalId>false</externalId>
+        <label>Exception Stack Trace</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ExternalCreationDate__c</fullName>
+        <defaultValue>NOW()</defaultValue>
+        <description>External last modified date based on iDoc date (using the external system date/timezone) to ensure the integration between systems will keep the transactions sequence as they were triggered by the original System</description>
+        <externalId>false</externalId>
+        <label>External Creation Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>InternalId__c</fullName>
+        <description>Internal ID from External system related to this event (used to identify original transaction from external system)</description>
+        <externalId>true</externalId>
+        <label>Internal ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsRetryDisabled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Identify if the retries should be executed for this event. If equal TRUE disable retries even if retry count is bigger than zero (can be used for errors as errors does not require retries)</description>
+        <externalId>false</externalId>
+        <label>Is Retry Disable?</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ObjectId__c</fullName>
+        <description>Object ID (internal Sales Force Id) related to this event (used to retrieve information to create the transaction to the receiver Account)</description>
+        <externalId>true</externalId>
+        <label>ObjectId</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payload__c</fullName>
+        <description>Payload
+(Valor do Objeto Corrente, para atribuir esta informação concatene o objeto a uma string e atribua este valor concatenado ao payload. Este Atributo podera ser utilizado no futuro para Determinar o estado do Evento Corrente dispensando o uso do RecordType QUEUED nos Objetos que necessitam gerenciamento de estado)</description>
+        <externalId>false</externalId>
+        <label>Payload</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Receiver__c</fullName>
+        <externalId>false</externalId>
+        <label>Receiver</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RetryCount__c</fullName>
+        <defaultValue>10</defaultValue>
+        <description>Identify the number of retries for this event</description>
+        <externalId>false</externalId>
+        <label>Retry Count</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sender__c</fullName>
+        <externalId>false</externalId>
+        <label>SenderAccount</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>StatusMessage__c</fullName>
+        <description>Error Message from internal or external System</description>
+        <externalId>false</externalId>
+        <label>Status Message</label>
+        <length>32000</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Status</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>DELIVERED</fullName>
+                    <default>false</default>
+                    <label>DELIVERED</label>
+                </value>
+                <value>
+                    <fullName>ERROR</fullName>
+                    <default>false</default>
+                    <label>ERROR</label>
+                </value>
+                <value>
+                    <fullName>QUEUED</fullName>
+                    <default>false</default>
+                    <label>QUEUED</label>
+                </value>
+                <value>
+                    <fullName>SUCCESS</fullName>
+                    <default>false</default>
+                    <label>SUCCESS</label>
+                </value>
+                <value>
+                    <fullName>INVALID</fullName>
+                    <default>false</default>
+                    <label>INVALID</label>
+                </value>
+                <value>
+                    <fullName>DONE</fullName>
+                    <default>false</default>
+                    <label>DONE</label>
+                </value>
+                <value>
+                    <fullName>PROCESSING</fullName>
+                    <default>false</default>
+                    <label>PROCESSING</label>
+                </value>
+                <value>
+                    <fullName>UNHANDLED</fullName>
+                    <default>false</default>
+                    <label>UNHANDLED</label>
+                </value>
+                <value>
+                    <fullName>IGNORED</fullName>
+                    <default>false</default>
+                    <label>IGNORED</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>businessDocumentCorrelatedNumber__c</fullName>
+        <externalId>false</externalId>
+        <label>businessDocumentCorrelatedNumber</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>businessDocument__c</fullName>
+        <externalId>true</externalId>
+        <label>businessDocumentNumber</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>parentEvent__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Correlated Event</description>
+        <externalId>false</externalId>
+        <label>Parent Event</label>
+        <referenceTo>Queue__c</referenceTo>
+        <relationshipLabel>Correlateds</relationshipLabel>
+        <relationshipName>correlateds</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <gender>Masculine</gender>
+    <label>EventQueue</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>EventName__c</columns>
+        <columns>Status__c</columns>
+        <columns>businessDocument__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>businessDocumentCorrelatedNumber__c</columns>
+        <columns>InternalId__c</columns>
+        <columns>ObjectId__c</columns>
+        <columns>StatusMessage__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>AllToday</fullName>
+        <columns>NAME</columns>
+        <columns>EventName__c</columns>
+        <columns>Status__c</columns>
+        <columns>StatusMessage__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>businessDocument__c</columns>
+        <columns>businessDocumentCorrelatedNumber__c</columns>
+        <columns>RetryCount__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>Tudo - Hoje</label>
+        <language>pt_BR</language>
+    </listViews>
+    <nameField>
+        <displayFormat>{0000000000}</displayFormat>
+        <label>QueueCode</label>
+        <trackHistory>true</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Queues</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>EventName__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>businessDocument__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>InternalId__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>StatusMessage__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LAST_UPDATE</customTabListAdditionalFields>
+        <listViewButtons>Delete</listViewButtons>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>businessDocument__c</searchFilterFields>
+        <searchFilterFields>EventName__c</searchFilterFields>
+        <searchFilterFields>ObjectId__c</searchFilterFields>
+        <searchFilterFields>InternalId__c</searchFilterFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Delete</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Delete</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&apos;/soap/ajax/29.0/connection.js&apos;)}
+try
+{
+  var selectedRecords = {!GETRECORDIDS( $ObjectType.Queue__c )};
+  if(selectedRecords.length&lt;1)
+    alert(&apos;Please Select at Least One Row !&apos;);
+  else
+  {
+    userConsent = confirm(
+        selectedRecords.length +
+        &apos; Record(s) will be Deleted. Continue ? &apos;
+      );
+    if(userConsent == true)
+    {
+      delResult = sforce.connection.deleteIds(selectedRecords);
+      if (delResult[0].getBoolean(&quot;success&quot;))
+      {
+        alert(&apos;The Record(s) were Deleted Successfully.&apos;);
+        window.location.reload();
+      }
+      else
+        alert(
+          &apos;The Record(s) Could Not be Deleted. Error Message: &apos; +
+          delResult[0].errors.message
+        );
+    }
+  }
+}
+catch(e)
+{
+  alert(&apos;The Action Could not be Completed. Error Message: &apos; + e);
+}</url>
+    </webLinks>
+</CustomObject>
