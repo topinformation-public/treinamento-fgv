@@ -1,0 +1,16 @@
+public enum EventQueueStatusType {
+    SUCCESS
+    , ERROR
+    , QUEUED
+    , DELIVERED
+    , INVALID
+    , WAITING_EXTERNAL_SYSTEM
+    , QUEUED_ON_EXTERNAL_SYSTEM
+    , UNHANDLED
+    , WORKFLOW
+    , PROCESSING
+    , SCHEDULED
+    , BATCH
+    , WAITING
+    , IGNORED
+}
