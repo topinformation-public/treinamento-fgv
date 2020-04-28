@@ -9,6 +9,11 @@ public class GetAddressOutboundCommand extends AbstractUpdateableOutboundCommand
 
     override
     public Object transformToSend () {
+        // find no repository
+        // chamar o Transformer para 
+        // return transformer.toEnrollmentRequest (lead);
+
+
         return event.getBusinessDocumentNumber();
     }
 

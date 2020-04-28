@@ -20,6 +20,7 @@ public class GetAddressOutboundService extends AbstractRestOutboundService {
         return zipAddress.toAccount(accountId);
     }
 
+
     public Account getAddress (String accountId, String zipCode) {
         
         setup(buildEvent(accountId, zipCode));
