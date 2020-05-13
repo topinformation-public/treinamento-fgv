@@ -38,4 +38,8 @@ export default class Address extends LightningElement {
         this.address[event.target.name] = event.target.value;
     }
 
+    handleStateSelected (event) {
+        this.address.state = event.detail.state;
+    }   
+
 }

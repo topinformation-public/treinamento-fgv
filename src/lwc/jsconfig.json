@@ -16,6 +16,12 @@
             ],
             "c/zipCode": [
                 "zipCode/zipCode.js"
+            ],
+            "c/state": [
+                "state/state.js"
+            ],
+            "c/cities": [
+                "cities/cities.js"
             ]
         },
         "experimentalDecorators": true
