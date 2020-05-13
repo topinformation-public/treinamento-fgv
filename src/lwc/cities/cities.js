@@ -1,8 +1,10 @@
-import { LightningElement, api, track } from 'lwc';
+import { LightningElement, api, track, wire } from 'lwc';
 
-//import findCitiesByState from '@salesforce/apex/CitiesCtrl.findCitiesByState';
+import findCitiesByState from '@salesforce/apex/GetCitiesCtrl.findCitiesByState';
 
 export default class Cities extends LightningElement {
+
+    @api state;
 
     @api city;
 
@@ -14,6 +16,8 @@ export default class Cities extends LightningElement {
 
     @track selectedCity;
 
+    @track cities = [];
+
     connectedCallback () {
         console.log ('connectedCallback -------- Cities');
         this.selectedCity = Object.assign ({}, this.city);
@@ -21,17 +25,35 @@ export default class Cities extends LightningElement {
 
     renderedCallback () {
         console.log ('renderedCallback -------- Cities');
+        console.log ('renderedCallback -------- ' + this.state );
+        console.log ('renderedCallback -------- ' + this.city );
     }
 
     handleChange(event){
+        this.selectedCity = event.target.value;
+        this.dispatchSelectedCity();
     }
 
-    findCities () {
+    @wire ( findCitiesByState, { state : '$state' } )
+    findCities ({error,data}) {
 
+        console.log (data);
+
+        if (!data) return;
+
+        this.cities = [];
+
+        for ( let i = 0; i < data.length; i++ ) {
+            this.cities.push ( { label : data[i].name, value : data[i].name } );
+        }
+    
     }
 
-    dispatchSelectedCities (event) {
-
+    dispatchSelectedCity () {
+        const selectedEvent = new CustomEvent ( 'selectedcity', {
+            detail : { city : this.selectedCity }
+        });
+        this.dispatchEvent (selectedEvent);
     }
 
 }

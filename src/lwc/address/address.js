@@ -31,7 +31,7 @@ export default class Address extends LightningElement {
     handleAddressFound (event) {
 
         this.address = Object.assign ( {} , event.detail.address);
-
+        console.log ('handleAddressFound  -------- ' + JSON.stringify(this.address));
     }
 
     handleChange (event) {
@@ -40,6 +40,12 @@ export default class Address extends LightningElement {
 
     handleStateSelected (event) {
         this.address.state = event.detail.state;
+        console.log ('handleStateSelected  -------- ' + JSON.stringify(this.address));
+    } 
+
+    handleCitySelected (event) {
+        this.address.city = event.detail.city;
+        console.log ('handleCitySelected  -------- ' + JSON.stringify(this.address));
     }   
 
 }

@@ -4,7 +4,7 @@ public with sharing class LeadTH  extends TriggerHandler {
     Map<Id, SObject> oldLeads;
 
     public LeadTH () {
-        this( (List<Lead>) Trigger.new, (Map<Id, SObject>) oldLeads );
+        this( (List<Lead>) Trigger.new, (Map<Id, SObject>) Trigger.oldMap );
     }
 
     public LeadTH (List<Lead> newLeads, Map<Id, SObject> oldLeads) {
