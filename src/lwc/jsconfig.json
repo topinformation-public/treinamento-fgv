@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "c/autocomplete": [
+                "autocomplete/autocomplete.js"
+            ],
+            "c/createContact": [
+                "createContact/createContact.js"
+            ],
+            "c/contacts": [
+                "contacts/contacts.js"
+            ],
+            "c/address": [
+                "address/address.js"
+            ],
+            "c/zipCode": [
+                "zipCode/zipCode.js"
+            ]
+        },
+        "experimentalDecorators": true
+    },
+    "include": [
+        "**/*",
+        "../../.sfdx/typings/lwc/**/*.d.ts"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}

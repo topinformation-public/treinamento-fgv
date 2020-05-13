@@ -1,0 +1,17 @@
+<template>
+
+    <lightning-input 
+        type="search"
+        label={label}
+        value={zipCode}
+        name="zipCode"
+        required={required}
+        disabled={disabled}
+        min-length="9"
+        max-length="9"
+        pattern="[0-9]{5}-[0-9]{3}"
+        onchange={handleChanged}
+        message-when-pattern-mismatch="Favor informar um CEP válido"
+    ></lightning-input>
+    
+</template>

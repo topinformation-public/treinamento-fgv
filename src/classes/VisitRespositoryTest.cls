@@ -96,4 +96,20 @@ public class VisitRespositoryTest {
     }
 
 
+    public class VisitRespositoryMock extends VisitRespository {
+
+        String payload;
+
+        public VisitRespositoryMock(String payload) {
+            this.payload = payload;
+        }
+
+        override
+        public List<AggregateResult> findByAccountIds(Set<String> accountIds) {
+            return (List<AggregateResult>) JSON.deserialize(payload , List<SObject>.class);
+        }
+
+    }
+
+
 }

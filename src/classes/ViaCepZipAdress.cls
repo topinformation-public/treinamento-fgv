@@ -19,6 +19,15 @@ public class ViaCepZipAdress {
         return account;
     }
 
+    public ZipCodeAddress toZipCodeAddress () {
+        ZipCodeAddress address = new ZipCodeAddress();
+        address.street = logradouro ;
+        address.streetAdditionalInfo = complemento;
+        address.state = uf;
+        address.city = localidade;
+        address.zipCode = cep;
+        return address;
+    }
 
 
 }

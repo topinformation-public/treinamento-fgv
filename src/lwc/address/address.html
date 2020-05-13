@@ -1,0 +1,62 @@
+<template>
+
+    <div class="slds-card slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none ">
+        <div class="slds-grid slds-wrap slds-grid_vertical-align-center">
+            <div class="slds-col slds-large-size_5-of-12 slds-medium-size_5-of-12 slds-small-size_5-of-12">
+
+                <c-zip-code zip-code={address.zipCode}
+                        onaddressfound={handleAddressFound}>
+                </c-zip-code>
+
+            </div>
+
+            <div class="slds-col slds-large-size_7-of-12 slds-medium-size_7-of-12 slds-small-size_7-of-12">
+
+                <lightning-input type="text"
+                    name="street"
+                    value={address.street}
+                    required
+                    max-length="255"
+                    onblur={handleChange}
+                ></lightning-input>
+
+            </div>
+
+        </div>
+
+        <div class="slds-grid slds-wrap slds-grid_vertical-align-center slds-p-horizontal_small">
+            <div class="slds-col slds-large-size_3-of-12 slds-medium-size_3-of-12 slds-small-size_3-of-12">
+
+                <lightning-input type="text"
+                    name="streetNumber"
+                    value={address.streetNumber}
+                    required
+                    max-length="30"
+                    onblur={handleChange}
+                ></lightning-input>
+    
+            </div>
+
+            <div class="slds-col slds-large-size_3-of-12 slds-medium-size_3-of-12 slds-small-size_3-of-12">
+
+                <lightning-input type="text"
+                    name="streetAdditionalInfo"
+                    value={address.streetAdditionalInfo}
+                    required
+                    max-length="30"
+                    onblur={handleChange}
+                ></lightning-input>
+    
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+    {address.street}
+
+</template>

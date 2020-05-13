@@ -21,6 +21,29 @@ public class GetAddressOutboundService extends AbstractRestOutboundService {
     }
 
 
+    public ZipCodeAddress getAddress ( String zipCode) {
+        
+        setup(buildEvent (zipCode));
+
+        ViaCepZipAdress address;
+
+        try {
+        
+            String response = get(  zipCode + '/json/');
+        
+            address = (ViaCepZipAdress) processResult(response);
+            
+            return address.toZipCodeAddress();
+        
+        } catch (Exception e) {
+            // do nothing
+        } finally  {
+            publishEventLog();
+        }
+
+        return null;
+    }
+    
     public Account getAddress (String accountId, String zipCode) {
         
         setup(buildEvent(accountId, zipCode));
@@ -43,7 +66,7 @@ public class GetAddressOutboundService extends AbstractRestOutboundService {
 
         return null;
     }
-
+    
     override
     public Object processResult(String response) {
         return JSON.deserialize( response, ViaCepZipAdress.class);
@@ -55,6 +78,15 @@ public class GetAddressOutboundService extends AbstractRestOutboundService {
                     .forObjectId(accountId)
                     .withReceiver('GATEWAY')
                     .withBusinessDocumentNumber (zipCode)    
+                    .buildEvent();
+
+    }
+
+    public EventQueue buildEvent (String zipCode) {
+
+        return new EventBuilder().createSynchronousOutboundEvent('GET_ADDRESS_OUTBOUND')
+                    .withReceiver('GATEWAY')
+                    .withSameDocumentNumberForAllIdentifiers(zipCode)    
                     .buildEvent();
 
     }

@@ -1,6 +1,6 @@
 public with sharing class AccountVisitEnricher {
 
-    AccountRepository repository = new AccountRepository();
+    AccountRepository repository;
 
     VisitRespository visitRepository;
 
@@ -17,6 +17,8 @@ public with sharing class AccountVisitEnricher {
         
         List<AggregateResult> aggregatedResults = visitRepository.findByAccountIds(accountIds);
         
+        System.debug( JSON.serialize(aggregatedResults) );
+
         for ( AggregateResult result :  aggregatedResults ) {
 
             accounts.add ( new Account ( Id = (String) result.get('Account__c')
@@ -24,9 +26,19 @@ public with sharing class AccountVisitEnricher {
 
         }
 
-        update accounts; // susbstituir pelo repository de account.
+        repository.save (accounts); // susbstituir pelo repository de account.
         
         return accounts;
+    }
+
+    // 4 test injection
+    public void setVisitRepository (VisitRespository visitRepository) {
+        this.visitRepository = visitRepository;
+    }
+
+    // 4 test injection
+    public void setAccountRepository (AccountRepository repository) {
+        this.repository = repository;
     }
 
 }

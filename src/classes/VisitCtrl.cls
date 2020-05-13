@@ -14,8 +14,13 @@ global with sharing class VisitCtrl {
 
     @HttpPost
     global static Visit__c create (Visit__c visit) {
-        
-        insert visit;
+    
+        new EventBuilder().createOutboundEventFor('CREATE_VISIT')
+                    .withReceiver('GATEWAY')
+                    .withPayload( JSON.serialize(visit) )
+                    .withSameDocumentNumberForAllIdentifiers('2')
+                    .buildAndSave();
+
         return visit;
     }
 

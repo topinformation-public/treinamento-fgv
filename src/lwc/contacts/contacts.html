@@ -1,0 +1,26 @@
+<template>
+
+    <div class="slds-box slds-card"> 
+
+        <lightning-datatable
+            key-field="id"
+            data={contacts}
+            show-row-number-column
+            columns={columns}
+            selected-rows={selectedRows}
+            onrowselection={handleRowsSelected}>
+        </lightning-datatable>
+    
+    </div>
+
+
+    <template if:true={contact}>
+
+        <c-create-contact 
+            contact={contact}
+            oncontactchanged={handleContactChanged}>
+        </c-create-contact>
+
+    </template>
+
+</template>

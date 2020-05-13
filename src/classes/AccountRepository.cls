@@ -29,5 +29,10 @@ public virtual with sharing class AccountRepository {
         return account;
     }
 
+    virtual
+    public List<Account> save (List<Account> accounts) {
+        update accounts;
+        return accounts;
+    }
 
 }
