@@ -1,0 +1,106 @@
+<template>
+    
+    <div class="slds-card slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none ">
+        
+        <div class="slds-grid slds-wrap slds-grid_vertical-align-center slds-p-horizontal_small">
+
+            <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_4-of-12 slds-p-right_x-small">
+
+                <lightning-input type="text"
+                    class="validable"
+                    name="documentNumber"
+                    label="CPF"
+                    required
+                    value={enrollment.documentNumber}
+                    max-length="14"
+                    onblur={handleDocument}
+                    ></lightning-input>
+
+            </div>
+
+            <div class="slds-col slds-large-size_8-of-12 slds-medium-size_8-of-12 slds-small-size_8-of-12">
+
+                <lightning-input type="text"
+                    class="validable"
+                    name="name"
+                    label="Nome"
+                    value={enrollment.name}
+                    required
+                    max-length="255"
+                    onblur={handleChange}
+                ></lightning-input>
+
+            </div>
+
+        </div>
+
+        <div class="slds-grid slds-wrap slds-grid_vertical-align-center slds-p-horizontal_small">
+
+            <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_4-of-12 slds-p-right_x-small">
+
+                <lightning-input type="tel"
+                    class="validable"
+                    label="Telefone"
+                    name="phone"
+                    value={enrollment.phone}
+                    required
+                    max-length="15"
+                    pattern="([0-9]{2})[0-9]{5}-[0-9]{4}"
+                    onblur={handleChange}
+                ></lightning-input>
+    
+            </div>
+
+            <div class="slds-col slds-large-size_8-of-12 slds-medium-size_8-of-12 slds-small-size_8-of-12">
+
+                <lightning-input type="email"
+                    class="validable"
+                    label="Email"
+                    name="email"
+                    value={enrollment.email}
+                    required
+                    max-length="255"
+                    onblur={handleChange}
+                ></lightning-input>
+    
+            </div>
+
+            <div class="slds-col slds-large-size_8-of-12 slds-medium-size_8-of-12 slds-small-size_8-of-12">
+
+                <lightning-combobox
+                    class="validable"
+                    name="course"
+                    value={enrollment.course.code}
+                    required
+                    label="Curso"
+                    options={courses}
+                    onchange={handleChange}
+                    message-when-value-missing="Favor informar o curso"
+                ></lightning-combobox>
+    
+            </div>
+
+        </div>
+
+        <c-address  
+            class="component-validable"
+            address={enrollment.address}
+            ></c-address>
+
+
+    </div>
+
+    <div class="">
+
+        <lightning-button name="createLead" 
+            label="Continuar"
+            onclick={handleCreate}    
+        ></lightning-button>
+
+    </div>
+
+    <template if:true={loading}>
+        <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+    </template>
+
+</template>

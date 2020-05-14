@@ -1,8 +1,8 @@
-import { LightningElement, track} from 'lwc';
+import { LightningElement, api} from 'lwc';
  
 export default class Address extends LightningElement {
 
-    @track address;
+    @api address;
 
     constructor () {
         super();
@@ -47,5 +47,22 @@ export default class Address extends LightningElement {
         this.address.city = event.detail.city;
         console.log ('handleCitySelected  -------- ' + JSON.stringify(this.address));
     }   
+
+    @api 
+    validateAll () {
+        return this.validateLocalFields ();
+    }
+ 
+
+    validateLocalFields () {
+         let valid = true;
+         this.template.querySelectorAll(".validable").forEach ( element => {
+             if ( !element.checkValidity () ) {
+                 element.reportValidity();
+                 valid = false;
+             }   
+         });
+         return valid;
+     }
 
 }

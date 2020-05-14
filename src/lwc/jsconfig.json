@@ -22,6 +22,9 @@
             ],
             "c/cities": [
                 "cities/cities.js"
+            ],
+            "c/enrollment": [
+                "enrollment/enrollment.js"
             ]
         },
         "experimentalDecorators": true
