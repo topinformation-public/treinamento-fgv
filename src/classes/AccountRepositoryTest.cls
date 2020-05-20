@@ -1,5 +1,10 @@
 @isTest
 public class AccountRepositoryTest {
+
+    @TestSetup
+    public static void setup() {
+
+    }
     
     @isTest
     public static void findByNameTest () {
@@ -15,6 +20,8 @@ public class AccountRepositoryTest {
         System.assert( !accounts.isEmpty() );
         System.assert( accounts.size() == 1 );
         System.assertEquals( expectedName, accounts.get(0).Name) ;
+
+       
         
     }
 

@@ -67,4 +67,15 @@ export default class ZipCode extends LightningElement {
         return value.replace(/(\d{5})(\d)/,"$1-$2");
     }
 
+    @api
+    validateAll () {
+       const component =  this.template.querySelector("lightning-input");
+       if (!component.checkValidity()) {
+            component.reportValidity();
+            return false;
+       }
+       return true;
+    }
+
+
 }

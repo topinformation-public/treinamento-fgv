@@ -1,0 +1,38 @@
+<template>
+
+    <div class="slds-card slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none ">
+
+        <div class="slds-grid slds-wrap slds-grid_vertical-align-center slds-p-horizontal_small">
+
+            <div
+                class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_4-of-12 slds-p-right_x-small">
+
+                <lightning-input type="text" class="validable" name="course" label="Curso" required
+                     max-length="50" onchange={handleCourseChange}>
+                </lightning-input>
+
+            </div>
+
+            <div
+                class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-small-size_4-of-12 slds-p-right_x-small">
+
+                <lightning-combobox class="validable" name="school" label="Unidade" options={school}
+                    onchange={handleSchoolChange}></lightning-combobox>
+
+            </div>
+
+        </div>
+        <div class="slds-grid slds-wrap slds-grid_vertical-align-center slds-p-horizontal_small">
+
+            <lightning-datatable 
+                data={courses} columns={coursesColumns} 
+                show-row-number-column
+                hide-checkbox-column
+                key-field="id" onrowaction={handleSelectedRow}>
+            </lightning-datatable>
+
+        </div>
+    </div>
+  
+
+</template>

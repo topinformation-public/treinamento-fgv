@@ -1,0 +1,33 @@
+<template>
+    <section
+        role="dialog"
+        tabindex="-1"
+        aria-labelledby="modal-heading-01"
+        aria-modal="true"
+        aria-describedby="modal-content-id-1"
+        class="slds-modal slds-fade-in-open slds-modal_large">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleDialogClose} >
+                    <lightning-icon icon-name="utility:close" alternative-text="Close" variant="inverse" size="medium"></lightning-icon>
+                </button>
+                <p class="slds-text-heading_small">{title}</p>
+            </header>
+
+            <div class="slds-modal__content slds-p-around_medium warning-messages" id="modal-content-id-1" >
+
+                <slot></slot>
+                
+            </div>
+
+            <footer class="slds-modal__footer">
+                <button class="slds-button slds-button_brand" 
+                    aria-label={closeLabel} tabindex="0" 
+                    onclick={handleDialogClose}>{closeLabel}
+                </button>
+            </footer>
+
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

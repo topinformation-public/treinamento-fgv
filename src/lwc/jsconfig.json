@@ -25,6 +25,24 @@
             ],
             "c/enrollment": [
                 "enrollment/enrollment.js"
+            ],
+            "c/errorPanel": [
+                "errorPanel/errorPanel.js"
+            ],
+            "c/normalizer": [
+                "normalizer/normalizer.js"
+            ],
+            "c/modal": [
+                "modal/modal.js"
+            ],
+            "c/searchCourseModal": [
+                "searchCourseModal/searchCourseModal.js"
+            ],
+            "c/queueErrors": [
+                "queueErrors/queueErrors.js"
+            ],
+            "c/createLead": [
+                "createLead/createLead.js"
             ]
         },
         "experimentalDecorators": true

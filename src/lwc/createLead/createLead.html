@@ -1,0 +1,79 @@
+<template>
+
+    <lightning-record-edit-form 
+    object-api-name="Lead"
+    record-id={leadId}
+    onsubmit={handleSubmit}
+    onsuccess={handleSuccess}
+        >
+
+        <lightning-messages></lightning-messages>
+
+        <lightning-layout multiple-rows="true" horizontal-align="spread">
+            <lightning-layout-item size="2" padding="around-small">
+                <lightning-input-field
+                    variant="label-stacked"    
+                    field-name="DocumentNumber__c"
+                    onchange={handleDocumentNumber}>
+                </lightning-input-field>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="10" padding="around-small">
+                <lightning-input-field  field-name="FirstName">
+                </lightning-input-field>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="8" padding="around-small">
+                <lightning-input-field field-name="LastName">
+                </lightning-input-field>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="4" padding="around-small">
+                <lightning-input-field field-name="Phone">
+                </lightning-input-field>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="4" padding="around-small">
+                <lightning-input-field field-name="Email">
+                </lightning-input-field>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="8"  padding="around-small">
+                <lightning-input-field field-name="DandbCompanyId">
+                </lightning-input-field>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="2" padding="around-small">
+                <lightning-input-field field-name="PostalCode">
+                </lightning-input-field>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="10" padding="around-small">
+                <lightning-input-field field-name="Street">
+                </lightning-input-field>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="8" padding="around-small">
+                <lightning-input-field field-name="City">
+                </lightning-input-field>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="4" padding="around-small">
+                <lightning-input-field field-name="State">
+                </lightning-input-field>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="10" padding="around-small">
+                <lightning-input-field field-name="Categorys__c">
+                </lightning-input-field>
+            </lightning-layout-item>
+
+        </lightning-layout>
+
+        <lightning-button variant="brand" type="submit" name="save" label="Save">
+
+        </lightning-button>
+
+</lightning-record-edit-form>
+
+</template>

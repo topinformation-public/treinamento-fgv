@@ -1,0 +1,12 @@
+<aura:component implements="flexipage:availableForAllPageTypes, force:lightningQuickAction, force:hasRecordId" access="global">
+
+	<aura:html tag="style">
+		.slds-modal__container { 
+			min-width: 90vw;
+		} 
+	</aura:html>
+
+    <c:autocomplete>
+    </c:autocomplete>
+
+</aura:component>

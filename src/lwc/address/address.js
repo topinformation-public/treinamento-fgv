@@ -21,6 +21,7 @@ export default class Address extends LightningElement {
     
     connectedCallback () {
         console.log ('connectedCallback -------- Address');
+        this.address = Object.assign ( {} , this.address);
     }
 
     renderedCallback () {
@@ -35,7 +36,9 @@ export default class Address extends LightningElement {
     }
 
     handleChange (event) {
+        console.log ('handleChange  -------- ' + event.target.value);
         this.address[event.target.name] = event.target.value;
+        console.log ('handleChange  -------- ' + JSON.stringify(this.address));
     }
 
     handleStateSelected (event) {
@@ -50,9 +53,17 @@ export default class Address extends LightningElement {
 
     @api 
     validateAll () {
-        return this.validateLocalFields ();
+        return this.validateLocalFields () || validateComponents();
     }
- 
+    
+    validateComponents () {
+
+       let isValid = true;
+       this.template.querySelectorAll(".component-validable").forEach ( element => {
+                isValid = element.validateAll();
+        });
+        return isValid;
+    }
 
     validateLocalFields () {
          let valid = true;

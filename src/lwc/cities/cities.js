@@ -56,4 +56,17 @@ export default class Cities extends LightningElement {
         this.dispatchEvent (selectedEvent);
     }
 
+    @api
+    validateAll () {
+
+       let isValid = true;
+       this.template.querySelectorAll(".component-validable").forEach ( element => {
+            if (!element.checkValidity() ) {
+                element.reportValidity();
+                isValid = false; 
+            }
+        });
+        return isValid;
+    }
+
 }

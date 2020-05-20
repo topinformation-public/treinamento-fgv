@@ -45,7 +45,6 @@
                     value={enrollment.phone}
                     required
                     max-length="15"
-                    pattern="([0-9]{2})[0-9]{5}-[0-9]{4}"
                     onblur={handleChange}
                 ></lightning-input>
     
@@ -66,19 +65,27 @@
             </div>
 
             <div class="slds-col slds-large-size_8-of-12 slds-medium-size_8-of-12 slds-small-size_8-of-12">
-
-                <lightning-combobox
-                    class="validable"
-                    name="course"
-                    value={enrollment.course.code}
-                    required
-                    label="Curso"
-                    options={courses}
-                    onchange={handleChange}
-                    message-when-value-missing="Favor informar o curso"
-                ></lightning-combobox>
-    
+                
+                <lightning-input 
+                label="Course"
+                type="text"
+                name="course"
+                value={enrollment.course.name}
+                read-only
+                >
+                </lightning-input>
             </div>
+            <div class="slds-col slds-large-size_1-of-12 slds-medium-size_1-of-12 slds-small-size_1-of-12">
+
+                <lightning-button-icon 
+                icon-name="utility:search" 
+                alternative-text="Pesquisa de Cursos" 
+                class="slds-m-left_xx-small" 
+                onclick={openModal}
+                title="Pesquisa de Cursos"></lightning-button-icon>
+
+            </div>
+
 
         </div>
 
@@ -97,7 +104,27 @@
             onclick={handleCreate}    
         ></lightning-button>
 
+        <lightning-button class="" name="openModal" 
+            label="Abrir modal"
+            onclick={openModal}    
+        ></lightning-button>
+
     </div>
+
+    <template if:true={showModal}>
+
+        <c-modal
+            title="Pesquise os dados de Custo" 
+            close-label="Ok" 
+            onclosemodal={closeModal}>
+
+            <c-search-course-modal
+                oncourseselected={handleCourseSelected}
+            ></c-search-course-modal>
+                
+        </c-modal>
+
+    </template>
 
     <template if:true={loading}>
         <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>

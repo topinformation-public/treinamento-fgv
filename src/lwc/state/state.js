@@ -46,5 +46,20 @@ export default class State extends LightningElement {
         this.dispatchEvent (event);
     }
 
+    @api
+    validateAll () {
+
+       let isValid = true;
+       this.template.querySelectorAll(".component-validable").forEach ( element => {
+            if (!element.checkValidity() ) {
+                element.reportValidity();
+                isValid = false; 
+            }
+            
+        });
+
+        return isValid;
+    }
+
 
 }

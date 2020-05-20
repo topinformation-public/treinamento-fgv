@@ -1,13 +1,22 @@
 import { LightningElement, track } from 'lwc';
-import findLeadByDocument from '@salesforce/apex/LeadCtrl.findLeadByDocumentNumber';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent'
+import { NavigationMixin } from 'lightning/navigation';
+import { loadScript } from 'lightning/platformResourceLoader';
+import moment from '@salesforce/resource/moment';
 
-export default class Enrollment extends LightningElement {
+import findLeadByDocument from '@salesforce/apex/LeadCtrl.findLeadByDocumentNumber';
+import create from '@salesforce/apex/LeadCtrl.create';
+import { build } from "./builder";
+
+export default class Enrollment extends NavigationMixin(LightningElement) {
 
     @track enrollment;
 
     @track courses;
 
     loading = false;
+
+    showModal = false;
 
     constructor () {
         super();
@@ -31,9 +40,20 @@ export default class Enrollment extends LightningElement {
                 , state : ""
             }
         };
+    
+        this.courses = [
+            {label : "Pós Graduação - TI", value : "00001"},
+            {label : "Pós Graduação - Comércio Exterior", value : "00002"}
+        ]
     }
 
     connectedCallback () {
+
+        loadScript(this, moment).then( () => {
+        }).catch(error => {
+            this.error = error;
+        });
+
     }
 
 
@@ -68,6 +88,27 @@ export default class Enrollment extends LightningElement {
 
         if (!this.validateAll()) return;
 
+        create( build(this.enrollment)).then( response => {
+            
+            this[NavigationMixin.Navigate]( {
+                type: 'standard__recordPage',
+                attributes: {
+                    recordId: response.Id,
+                    actionName: 'view',
+                }
+            });
+
+        }).catch (error => {
+
+            const toastEvent = new ShowToastEvent({
+                title: "Error",
+                variant : "error",
+                message : "Não foi possível criar o lead {0} ",
+                messageData : [ error.message ]
+            });
+
+        }) ;
+
     }
 
     validateAll () {
@@ -92,6 +133,20 @@ export default class Enrollment extends LightningElement {
             valid = element.validateAll ();    
         });
         return valid;
+    }
+
+    openModal (event) {
+        this.showModal = true;
+    }
+
+    closeModal(event) {
+        this.showModal = false;
+    }
+
+    handleCourseSelected (event) {
+        console.log(event.detail.course);
+        this.enrollment.course = Object.assign ({}, event.detail.course);
+        this.closeModal();
     }
 
 }

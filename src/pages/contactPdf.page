@@ -1,0 +1,48 @@
+<apex:page standardController="Contact" extensions="ContactPdfCtrl" showHeader="false" renderAs="PDF" applyHtmlTag="false" applyBodyTag="false">
+
+    <html>
+        <head>
+
+            <style>
+            
+                body {
+                    font-family: Arial Unicode MS, Arial, Helvetica, sans-serif
+                }
+                .tableClass {
+                    border: 1px solid;
+    width: 100%;
+                }
+        
+            </style>
+
+        </head>
+
+        <body>
+        {!Contact.FirstName}
+        {!Contact.LastName}
+
+        <apex:dataTable value="{!contacts}" var="cont" id="theTable"
+                    rowClasses="odd,even" styleClass="tableClass">
+
+                <apex:facet name="caption">table caption</apex:facet>
+                <apex:facet name="header">table header</apex:facet>
+                <apex:facet name="footer">table footer</apex:facet>
+
+            <apex:column>
+                <apex:facet name="header">First Name</apex:facet>
+                <apex:facet name="footer">FirstName footer</apex:facet>
+                <apex:outputText value="{!cont.FirstName}"/>
+            </apex:column>
+
+            <apex:column>
+                <apex:facet name="header">Last Name</apex:facet>
+                <apex:facet name="footer">Last Name footer</apex:facet>
+                <apex:outputText value="{!cont.LastName}"/>
+            </apex:column>
+
+        </apex:dataTable>
+
+        </body>
+    </html>
+
+</apex:page>

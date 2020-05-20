@@ -14,6 +14,7 @@
             <div class="slds-col slds-large-size_7-of-12 slds-medium-size_7-of-12 slds-small-size_7-of-12">
 
                 <lightning-input 
+                    label = "Endereço"
                     class="validable"
                     type="text"
                     name="street"
@@ -30,8 +31,10 @@
         <div class="slds-grid slds-wrap slds-grid_vertical-align-center slds-p-horizontal_small">
             <div class="slds-col slds-large-size_3-of-12 slds-medium-size_3-of-12 slds-small-size_3-of-12">
 
-                <lightning-input type="text"
-                class="validable"
+                <lightning-input 
+                    label = "Numero"
+                    type="text"
+                    class="validable"
                     name="streetNumber"
                     value={address.streetNumber}
                     required
@@ -43,8 +46,10 @@
 
             <div class="slds-col slds-large-size_3-of-12 slds-medium-size_3-of-12 slds-small-size_3-of-12">
 
-                <lightning-input type="text"
-                class="validable"
+                <lightning-input 
+                    type="text"
+                    label = "Complemento"
+                    class="validable"
                     name="streetAdditionalInfo"
                     value={address.streetAdditionalInfo}
                     required
